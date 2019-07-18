@@ -1,0 +1,174 @@
+Se necesita hacer que la base de datos abierta no admita nuevas conexiones para poder realizar tareas de mantenimiento cuando finalicen las sesiones actuales. ¿Qué debemos hacer?
+Seleccione una:
+a. Usar el comando ALTER DATABASE
+b. Usar el comando ALTER SYSTEM para habilitar el modo RESTRICTED SESSION ************ Correcta
+c. Usar el comando STARTUP con la opción RESTRICTED
+d. Usar el comando ALTER SYSTEM para terminar la sesiones en marcha con KILL SESSION
+Retroalimentación
+
+Respuesta correcta
+La respuesta correcta es: Usar el comando ALTER SYSTEM para habilitar el modo RESTRICTED SESSION
+
+
+///////////////////////////////////////////////////////////////////
+
+
+¿Que dos vistas deberías consultar para visualizar los nombres y localización de los archivos de control para la BD oradba? Elige dos:
+Seleccione una o más de una:
+a. V$INSTANCE
+b. V$SYSTEM_PARAMETER
+Correcta
+c. V$CONTROLFILE_RECORD_SECTION
+d. V$CONTROLFILE
+Correcta
+e. V$DATABASE
+Retroalimentación
+
+Respuesta correcta
+
+ 
+La respuesta correcta es: V$SYSTEM_PARAMETER
+, V$CONTROLFILE
+
+
+//////////////////////////////////////////////////////////////////////
+
+¿A qué recurso habría que poner un límite para asegurarse de que un usuario no acapare memoria o  E/S mediante la ejecución de sentencias intensivas?
+Seleccione una:
+a. CONNECT_TIME
+b. CPU_PER_SESSION
+c. SESSIONS_PER_USER
+d. LOGICAL_READS_PER_SESSION Correcta
+e. IDDLE_TIME
+Retroalimentación
+
+Respuesta correcta
+
+ 
+La respuesta correcta es: LOGICAL_READS_PER_SESSION
+
+
+
+//////////////////////////////////////////////////////////////////////////
+
+
+Deseamos fijar que un usuario concreto tenga que cambiar la contraseña cada 30 días. Para ello es necesario:
+Seleccione una:
+a. Crear un perfil, asignarle la limitación del parámetro PASSWORD_LIFE_TIME y asignar el perfil al usuario Correcta
+b. Activar el control de recursos con la sentencia ALTER SYSTEM, crear un perfil y asignarle la limitación del parámetro PASSWORD_LIFE_TIME
+c. Activar el control de recursos con la sentencia ALTER SYSTEM, crear un perfil, asignarle la limitación del parámetro PASSWORD_GRACE_TIME y asignar el perfil al usuario
+d. Crear un perfil y asignarle la limitación del parámetro PASSWORD_GRACE_TIME
+Retroalimentación
+
+Respuesta correcta
+La respuesta correcta es: Crear un perfil, asignarle la limitación del parámetro PASSWORD_LIFE_TIME y asignar el perfil al usuario
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+1.Tienes creada la BD PROD con un sólo archivo de control. ¿Que habrías de hacer para multiplexar ese archivo de control?
+
+    ***Detener la BD, usar los comandos del sistema operativo para copiar el archivo de control existente a un dispositivo diferente, editar el parámetro CONTROL_FILES e iniciar la BD
+    Detener la BD, editar el parámetro CONTROL_FILES e iniciar la BD
+    Usar la sentencia ALTER DATABASE para editar el parámetro CONTROL_FILES
+    Usar la sentencia ALTER DATABASE para copiar el archivo de control existente a un dispositivo diferente y editar el parámetro CONTROL_FILES
+
+2.Si ejecutas desde SQL*Plus la sentencia: ALTER TABLESPACE data_02 RENAME DATAFILE ‘d:\data02.dbf’ TO ‘e:\data02.dbf’; ¿Qué tarea se ha realizado?
+
+    Creación de un archivo nuevo en el disco e: y actualización del diccionario de datos
+    Renombrar físicamente un archivo y actualización del diccionario de datos
+    Renombrado de un tablespace
+    Mover físicamente un archivo de datos del disco d: al e:
+    ****Actualización del diccionario de datos si el archivo destino existe
+
+3.La BD PROD tiene cuatro grupos de archivos "redo log" con dos miembros en cada grupo. ¿Cómo podría añadir un nuevo miembro a cada uno de los grupos existentes?
+
+    Deteniendo la instancia de BD y usando el comando ALTER DATABASE RENAME FILE
+   **** Usando el comando ALTER DATABASE ADD LOGFILE MEMBER
+    Deteniendo la instancia de BD, modificando el archivo de parámetros y reiniciando la instancia
+    Usando el comando ALTER DATABASE ADD LOGFILE GROUP
+    Eliminando los grupos y recreándolos a continuación
+    Deteniendo la instancia de BD y copiando los archivos log usando comandos del sistema operativo
+
+4.La cuenta de usuario JANE ha sido bloqueada por el sistema. ¿Cómo desbloquearías dicha cuenta sin eliminar los objetos de ese esquema?
+
+    **** Usando la sentencia ALTER USER con la cláusula ACCOUNT.
+    Usando la sentencia ALTER SYSTEM UNLOCK ACCOUNT.
+    Usando la sentencia DROP USER con la cláusula CASCADE.
+    Usando la sentencia ALTER USER con la cláusula QUOTA.
+    Modificando la clave del usuario JANE
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+1. ¿Qué pasará si todos los miembros del grupo log actual quedaran inaccesibles al proceso LGWR cuando se va a escribir en ellos?
+
+    Se detendrı́a la instancia de la BD.
+    Se eliminarı́a el grupo log actual.
+    El DBA tendrı́a que forzar un log “switch”.
+    El grupo log se ignorarı́a por el LGWR y los datos a archivar se escribirı́an en el grupo siguiente.
+
+2. Usando SQL*Plus, ¿cómo podrı́as visualizar los valores actuales para la “spool area”?
+
+    Abriendo el init.ora.
+    Usando el comando SET.
+    Usando el comando SHOW.
+    Usando el comando DESCRIBE.
+    Consultando el diccionario/catálogo de la BD.
+
+3. ¿Cuáles son los pasos correctos a seguir para resolver un error del S.O. causado por un espacio de disco insuficiente mientras se crea una base de datos?
+
+    Reservar espacio para los “datafiles” usando el comando ALTER DATABASE.
+    Detener la instancia de BD, modificar el tamaño del bloque de BD y reiniciar la instancia.
+    Redimensionar los “datafiles” creados por la sentencia CREATE DATABASE usando la sentencia ALTER DATABASE.
+    Detener la instancia de BD, eliminar todos los archivos creados por la sentencia CREATE DATABASE, corregir el problema e intentar crear la BD de nuevo.
+
+4. ¿Qué dos vistas deberı́as consultar para visualizar los nombres y localización de los archivos de control para la BD oradba? Elige dos:
+
+    V$INSTANCE
+    V$DATABASE
+    V$SYSTEM PARAMETER ******
+    V$CONTROLFILE      *****
+    V$CONTROLFILE RECORD SECTION
+
+///////////////////////////////////////////////////////////////////
+
+1. Necesita exportar la tabla PEDIDOS de la BD PROD que está abierta y en ese momento no tiene ningún usuario conectado. ¿Como podrı́as la BD en modo restringido?
+
+    Usando la sentencia ALTER SYSTEM con la opción KILL SESSION.
+    Usando la sentencia ALTER DATABASE con la opción RESTRICTED.
+    Usando la sentencia ALTER SYSTEM con la opción RESTRICTED SESSION. *****
+    Usando la sentencia ALTER SESSION con la opción RESTRICTED SESSION.
+
+2. Como Administrador desea realizar tareas de administración sin usar un fichero de “password”. ¿Como deberı́a entonces establecer un método de autentificación para el ABD?
+
+    Conceder el role DBA a tu cuenta del sistema operativo.
+    Ejecutar la utilidad de “password”, establecer el parámetro REMOTE LOGIN PASSWORDFILE a ‘SHARED’ y usar ‘CONNECT / AS SYSDBA’ para conectarte a la BD.
+    Establecer autentificación por sistema operativo, establecer el parámetro REMOTE LOGIN PASSWORDFILE a ‘NONE’ y usar ‘CONNECT / AS SYSDBA’ para conectarte a la BD.
+    Ejecutar la utilidad de “password”, establecer el parámetro REMOTE LOGIN PASSWORDFILE a ‘EXCLUSIVE’ y usar ‘CONNECT SYS/ AS SYSDBA’ para conectarte a la BD.
+
+3. El DBA concede el privilegio CREATE TABLE a LYNN con la opción ADMIN OPTION. LYNN crea la tabla EMP y concede el privilegio CREATE TABLE a SCOTT. SCOTT crea la tabla DEPT y concede a LYNN el privilegio SELECT sobre esa tabla. ¿Que pasa si el DBA retira a LYNN el privilegio CREATE TABLE?
+
+    SCOTT mantendrá el privilegio CREATE TABLE y las tablas se conservarán.
+    SCOTT mantendrá el privilegio CREATE TABLE y LYNN perderá el privilegio SELECT.
+    SCOTT perderá el privilegio CREATE TABLE y las tablas DEPT y EMP se eliminarán.
+    SCOTT perderá el privilegio CREATE TABLE y las tablas DEPT y EMP se conservarán.
+    SCOTT mantendrá el privilegio CREATE TABLE, la tabla EMP se eliminará y la tabla DEPT se conservará.f) SCOTT perderá el privilegio CREATE TABLE, las tablas DEPT y EMP se eliminarán y LYNN perderá el privilegio SELECT.
+
+4. Tienes creada la BD PROD con un sólo archivo de control. ¿Que habrı́as de hacer para multiplexar ese archivo de control?
+
+    Usar la sentencia ALTER DATABASE para editar el parámetro CONTROL FILES.
+    Detener la BD, editar el parámetro CONTROL FILES e iniciar la BD.
+    Usar la sentencia ALTER DATABASE para copiar el archivo de control existente a un dispositivo diferente y editar el parámetro CONTROL FILES.
+    Detener la BD, usar los comandos del sistema operativo para copiar el archivo de control existente a un dispositivo diferente, editar el parámetro CONTROL FILES e iniciar la BD.
+
+
+
+
+
+
+
+
+
